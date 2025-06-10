@@ -1,5 +1,6 @@
 image_output/
 runs/
+*.tar.gz
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
