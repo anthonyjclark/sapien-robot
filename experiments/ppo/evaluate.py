@@ -38,7 +38,7 @@ if __name__ == "__main__":
     from mani_skill.utils.wrappers.record import RecordEpisode
     from mani_skill.vector.wrappers.gymnasium import ManiSkillVectorEnv
 
-    from twsim.envs import plane  # noqa: F401
+    import twsim.envs  # noqa: F401
     from twsim.robots import transwheel  # noqa: F401
 
     device = torch.device("cuda" if torch.cuda.is_available() and args.cuda else "cpu")
