@@ -88,11 +88,26 @@ if __name__ == "__main__":
         # 12..<15: body angular velocity (x, y, z)
         # 15..<18: body linear velocity (x, y, z)
         # 18..<19: collision/no-collision (1.0/0.0)
+        # NOTE: the other environments (e.g., PlaneVel) do not include the last observation
         obs = torch.randn(1, 19).to(device)
 
         with torch.no_grad():
             action = agent.get_action(obs, deterministic=True)
             step += 1
+
+            # TODO: translate actions to the robot's physical commands
+            # the action space is scaled to [-1, 1], you can see what these mean physically
+            # by exploring the TransWheel._controller_configs method in transwheel.py
+            # At the time I am writing this, the following code is used
+            #   For the wheel velocities:
+            #     wheel_radius = 1.5         # inches
+            #     max_linear_velocity = 0.5  # inches / second
+            #     max_angular_velocity = max_linear_velocity / wheel_radius
+            #     lower=-max_angular_velocity,
+            #     upper=max_angular_velocity,
+            #   For the extension angles:
+            #     lower=0,
+            #     upper=np.pi,
 
         # TODO: change this to something more useful
         if step == 100:

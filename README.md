@@ -5,6 +5,10 @@
 Starting from the root of the repository:
 
 ```bash
+# I always use https://github.com/conda-forge/miniforge to manage environments
+mamba create -f environment.yml
+
+# Install our local package in editable mode in case you need to make changes
 cd twsim
 python -m pip install --editable .
 ```
