@@ -292,7 +292,7 @@ dependencies:
       - tqdm==4.67.1
       - transforms3d==0.4.2
       - trimesh==4.6.8
-      - twsim==0.1.0
+      - -e ./twsim/twsim
       - typeguard==4.4.2
       - tyro==0.9.19
 prefix: /class/cs152/miniforge3/envs/gymtest
